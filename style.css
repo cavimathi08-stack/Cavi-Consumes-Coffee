@@ -11,10 +11,11 @@
 }
 
 body{
-    font-family: 'Gaegu', sansserif;
+    font-family: 'Gaegu', sans-serif;
     font-size:16px;
     line-height: 1.5;
     background: #fff;
+    overflow-x: hidden; /* no horizontal scroll */
 }
 
 a{
@@ -107,18 +108,180 @@ img{
 
 /* video section */
 .video{
-    padding: 10p0 40px;
+    padding: 10px 0 40px;
 }
 
-.video-content{
+.video .video-content{
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.video-preview{
+.video .video-preview{
+    margin-bottom: 10px;
+}
+
+
+
+/*testimonials*/
+.testimonials{
+    padding: 40px 0;
+}
+
+.testimonials .testimonials-heading{
+    width: 700px;
+    margin-bottom: 40px;
+}
+
+.testimonials .testimonials-grid{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 30px;
+
+}
+
+/* psuedocollector - second paragraph */
+.testimonials .card p:nth-child(2){
+    margin-top: 30px;
+    font-weight: bold;
+}
+
+/* order */
+.order .order-grid{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 30px;
+    margin: 50px 0;
+}
+
+.order .order-card-subheading{
+    margin-bottom: 30px;
+}
+
+.order .order-card-label{
+    margin-bottom: 30px;
+    padding: 20px 0;
+    border-bottom: 1px solid #ccc;
+}
+
+.order ul{
+    margin: 30px 0;
+}
+
+.order ul li{
     margin-bottom: 20px;
 }
+
+.order ul li i{
+    margin-right: 10px;
+}
+
+
+
+/* FAQ */
+.faq {
+    padding: 40px 0;
+}
+
+.faq .faq-group{
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 20px;
+}
+
+.faq .faq-group .faq-group-header{
+    padding: 20px 0;
+    margin-bottom: 15px;
+    position: relative; /* relative postion on header*/
+}
+
+.faq .faq-group .faq-group-header h4 {
+    font-weight: 600;
+    width: 95%;
+}
+
+.faq .faq-group .faq-group-header i {
+    position: absolute; /* absolute position on icon */
+    right: 0;
+    top: 35px;
+    font-size: 1.3rem;
+    cursor: pointer;
+}
+
+.faq .faq-group .faq-group-body{
+    display: none;
+}
+
+.faq .faq-group .faq-group-body.open{
+    display: block; /* if the body class is open*/
+}
+
+.faq ul.faq-menu{
+    max-width: 400px;
+    margin: auto; /* middle */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #ddd;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.faq ul.faq-menu li{
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.faq ul.faq-menu li.active{
+    background: var(--dark-color); /* if class of active */
+    color: #fff;
+}
+
+/* footer */
+.footer{
+    padding: 40px 0;
+}
+
+.footer h4{
+    margin-bottom: 10px;
+}
+
+.footer ul li{
+    line-height: 2.5;
+}
+
+.footer ul {
+    color: #ccc;
+}
+
+.footer i {
+    font-size: 1.5rem;
+    margin-right: 10px;
+}
+
+.footer-grid{
+    display: grid; /* what is the difference between grid and flex???? */
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 30px;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer .card{
+    margin: 20px 30px 30px 0; /* meaning of many numbers */
+}
+
+.footer input[type='email']{
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 20px 0;
+
+}
+
 
 /* Utility Classes */
 .container{
@@ -131,6 +294,14 @@ img{
     max-width: 800px;
     margin: 0 auto;
     padding: 0 15px; /* 0 top and bottom */
+}
+
+/*card*/
+.card{
+    background: #fff;
+    color: #000;
+    border-radius: 10px;
+    padding: 20px;
 }
 
 /* Buttons */
@@ -148,6 +319,7 @@ img{
     border: none;
     border-radius: 10px;
     cursor: pointer;
+    text-align: center;
     transition: 0.5s;
 
 }
@@ -173,14 +345,14 @@ img{
 
 /* text classes */
 .text-xxl{
-    font-size: 3rem;
+    font-size: 4rem;
     line-height: 1.2;
     font-weight: 600;
     margin: 40px 0 20px;
 }
 
 .text-xl{
-    font-size: 2.2rem;
+    font-size: 3rem;
     line-height: 1.4;
     font-weight: normal;
     margin: 40px 0 20px;
@@ -209,4 +381,158 @@ img{
 
 .text-center{
     text-align: center;
+}
+
+/*background*/
+.bg-primary{
+    background: var(--primary-color);
+    color:#fff;
+}
+
+.bg-light{
+    background: var(--light-color);
+    color: #333;
+}
+
+.bg-dark{
+    background: var(--dark-color);
+    color: #fff;
+}
+
+.bg-black{
+    background: #000;
+    color: #fff;
+}
+
+/* hamburger button */
+.hamburger-button{
+    display: none; /* only show on smaller screens */
+    position: relative;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1000; /* z index brings it to the front */
+}
+
+.hamburger-button .hamburger-line{
+    width: 30px;
+    height: 3px;
+    background: #333;
+    margin: 6px 0;
+}
+
+/* mobile menu */
+.mobile-menu{
+    position: fixed;
+    top: 0;
+    right: -300px;
+    /*right: 0;*/
+    width: 250px;
+    height: 100%;
+    z-index: 100; /* below z-menu */
+    background: #fff;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+    transition: right 0.3s ease-in-out;
+}
+
+.mobile-menu.active{
+    right: 0;
+}
+
+.mobile-menu ul{
+    margin-top: 100px;
+    padding-right: 10px;
+}
+
+.mobile-menu ul li{
+    margin: 10px 0;
+}
+
+.mobile-menu ul li a{
+    font-size: 20px;
+    transition: 0.3s;
+}
+
+
+
+/* media queries */
+@media (max-width: 960px){
+    .text-xxl{
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 670px){
+    .navbar .main-menu {
+        display: none;
+    }
+
+    .navbar .hamburger-button{
+        display: block;
+    }
+
+    .hero .container{
+        /*background: url(images/hero-bg.jpeg); change to mobile photo? */
+        background-size: 350px 400px;
+        background-position: bottom;
+        height: 770px;
+    }
+    .hero .hero-content,
+    .hero .hero-text{
+        width: 100%;
+        text-align: center;
+    }
+
+    .hero .hero-buttons .btn {
+        margin-bottom: 10px;
+        display: block;
+        width: 100%;;
+    }
+
+    .video .video-1{
+        width: 90%;
+        max-width: 500px;
+
+    }
+
+
+
+    .testimonials .testimonials-heading{
+        max-width: 100%;
+        text-align: center;
+    }
+
+    .testimonials .testimonials-grid, 
+    .order .order-grid,
+    .footer .footer-grid{
+        grid-template-columns: 1fr;
+    }
+
+    .footer .card{
+        margin-right: 0;
+    }
+
+    .footer .footer-grid{
+        text-align: center;
+    }
+
+    /* text */
+    .text-xl{
+        font-size: 1.9rem;
+    }
+
+    .text-lg{
+        font-size: 1.5rem;
+    }
+
+    .text-md{
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 500px){
+    .text-xxl {
+        font-size: 2rem;
+  }
 }
