@@ -45,3 +45,87 @@ document.addEventListener('DOMContentLoaded', () => {
         mobileMenu.classList.toggle('active')
     );
 })
+
+// cafe reviews
+
+const cafes = [
+    {
+        id: 1,
+        name: "STC Starbucks",
+        address: "200 University Ave W, Waterloo, ON",
+        lat: 43.470913,
+        lng: -80.543496,
+        status: "visited",
+        drink: "Matcha sub Oat Milk",
+        rating: 4, // drink rating
+        notes: "",
+    },
+
+    {
+        id: 2,
+        name: "Sweet Dreams Teashop",
+        address: "170 University Ave W #14, Waterloo, ON",
+        lat: 43.472393,
+        lng: -80.539226,
+        status: "visited",
+        drink: "Iced Matcha with Bobba",
+        rating: 4,
+        notes: "Notes: got with 75% sugar, a little too sweet for me",
+    },
+
+    {
+        id: 3,
+        name: "heytea",
+        address: "250 Phillip St Unit D, Waterloo, ON",
+        lat: 43.473201,
+        lng: -80.536739,
+        status: "wishlist",
+        drink: "",
+        rating: 0,
+        notes: "",
+    },
+]
+
+document.addEventListener('DOMContentLoaded', ()=>{
+    const listEl = document.getElementById('cafe-list');
+    if (!listEl) return;
+
+    function starsHTML(rating){
+        if (rating == 0) return '<span class="no-rating">Not rated yet</span>';
+    
+        let stars = '';
+        for (let i = 1; i<=5; i++){
+            if (i<=rating){
+                stars += '<i class="fa-solid fa-star"></i>';
+            }
+            else {
+                stars+= '<i class="fa-regular fa-star"></i>';
+            }
+        }
+        return stars;
+    }
+
+
+
+    function renderCafes(){
+        listEl.innerHTML='';
+
+        cafes.forEach((cafe)=>{
+            const card = document.createElement('article');
+            card.className = 'card cafe-card';
+
+            card.innerHTML = `
+            <h3 class = "text-md">${cafe.name}</h3>
+            <span class="badge ${cafe.status}">${cafe.status}</span>
+            <div class="stars">${starsHTML(cafe.rating)}</div>
+            <p><i class="fas fa-mug-hot"></i>${cafe.drink|| 'No drink yet'}</p>
+            <p class="notes">${cafe.notes||''}</p>
+            `;
+
+            listEl.appendChild(card);
+        });
+    }
+
+    renderCafes();
+
+});

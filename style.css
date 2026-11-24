@@ -282,6 +282,17 @@ img{
 
 }
 
+/* stars for rating */
+.stars i{
+    color: #000;
+    margin-right: 2px;
+}
+
+.no-rating{
+    font-style: italic;
+    color: #888;
+}
+
 
 /* Utility Classes */
 .container{
