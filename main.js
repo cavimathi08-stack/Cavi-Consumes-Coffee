@@ -52,11 +52,12 @@ const cafes = [
     {
         id: 1,
         name: "STC Starbucks",
+        image: "images/stc-starbucks.jpeg",
         address: "200 University Ave W, Waterloo, ON",
         lat: 43.470913,
         lng: -80.543496,
-        status: "visited",
         drink: "Matcha sub Oat Milk",
+        status: "visited",
         rating: 4, // drink rating
         notes: "",
     },
@@ -64,13 +65,14 @@ const cafes = [
     {
         id: 2,
         name: "Sweet Dreams Teashop",
+        image: "images/sweet-dreams-teashop.jpeg",
         address: "170 University Ave W #14, Waterloo, ON",
         lat: 43.472393,
         lng: -80.539226,
-        status: "visited",
         drink: "Iced Matcha with Bobba",
+        status: "visited",
         rating: 4,
-        notes: "Notes: got with 75% sugar, a little too sweet for me",
+        notes: "Notes: got with 75% sugar, bit too sweet for me",
     },
 
     {
@@ -79,8 +81,8 @@ const cafes = [
         address: "250 Phillip St Unit D, Waterloo, ON",
         lat: 43.473201,
         lng: -80.536739,
-        status: "wishlist",
         drink: "",
+        status: "wishlist",
         rating: 0,
         notes: "",
     },
@@ -112,14 +114,19 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
         cafes.forEach((cafe)=>{
             const card = document.createElement('article');
-            card.className = 'card cafe-card';
+            card.className = 'card cafe-card bg-primary';
 
             card.innerHTML = `
-            <h3 class = "text-md">${cafe.name}</h3>
-            <span class="badge ${cafe.status}">${cafe.status}</span>
-            <div class="stars">${starsHTML(cafe.rating)}</div>
-            <p><i class="fas fa-mug-hot"></i>${cafe.drink|| 'No drink yet'}</p>
-            <p class="notes">${cafe.notes||''}</p>
+            <div class="cafe-info">
+                <div class="cafe-header">
+                    <h3 class="text-md">${cafe.name}</h3>
+                    <span class="badge ${cafe.status}">${cafe.status}</span>
+                </div>
+                <p><i class="fas fa-mug-hot"></i>${cafe.drink|| 'No drink yet'}</p>
+                <div class="stars">${starsHTML(cafe.rating)}</div>
+                <p class="notes">${cafe.notes||''}</p> 
+            </div>
+            <img src="${cafe.image || 'images/ccclogo.png'}" alt="${cafe.name}" class="cafe-photo">
             `;
 
             listEl.appendChild(card);

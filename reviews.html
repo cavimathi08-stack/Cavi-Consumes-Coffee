@@ -135,8 +135,14 @@
     </body>
 </html>
 
-<!--- for 'card.innerHTML' in main.js
-<span class="badge ${cafe.status}">${cafe.status}</span>
-<div class="stars">${stars.HTML(cafe.rating)}</div>
-<p><i class="fas fa-mug-hot"></i>${cafe.drink|| 'No drink yet'}</p>
-<p class="notes">${cafe.notes||''}</p> --->
+<!---for 'card.innerHTML' in main.js
+<div class="cafe-info">
+    <h3 class="text-md">${cafe.name}</h3>
+    <span class="badge ${cafe.status}">${cafe.status}</span>
+    <div class="stars">${stars.HTML(cafe.rating)}</div>
+    <p><i class="fas fa-mug-hot"></i>${cafe.drink|| 'No drink yet'}</p>
+    <p class="notes">${cafe.notes||''}</p> 
+</div>
+<img src="${cafe.image || 'ccclogo.png'}" alt="${cafe.name}" class="cafe-photo">
+
+--->

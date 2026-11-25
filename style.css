@@ -293,6 +293,47 @@ img{
     color: #888;
 }
 
+/* reviews page */
+.reviews {
+    padding: 40px 0;
+}
+
+#cafe-list{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+/* cafe card */
+.card.cafe-card {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    align-items: center;
+    color: #333;
+} /* had an error here with .card.cafe-card vs .card .cafe-card */
+
+.cafe-card .cafe-photo{
+    width: 140px;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 10px;
+    flex-shrink: 0;
+}
+
+.cafe-card .cafe-info{
+    flex:1;
+}
+
+.cafe-card .text-md{
+    margin: 0;
+}
+
+.cafe-card .cafe-header{
+    margin-bottom: 20px;
+}
+
 
 /* Utility Classes */
 .container{
@@ -539,6 +580,19 @@ img{
 
     .text-md{
         font-size: 1.2rem;
+    }
+
+    #cafe-list{
+        grid-template-columns: 1fr;
+    }
+
+    .cafe-card{
+        gap: 16px;
+    }
+
+    .cafe-card .cafe-photo{
+        width: 200px;
+        height: 200px;
     }
 }
 
