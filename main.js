@@ -25,10 +25,11 @@ document.addEventListener('DOMContentLoaded', () =>{ // wait for page to load
         otherGroups.forEach((otherGroup)=>{
             if (otherGroup != group){
                 const otherGroupBody = otherGroup.querySelector('.faq-group-body');
-                const otherIcon = otherGroup.querySelector('.faq-group-header');
+                const otherIcon = otherGroup.querySelector(i);
 
                 otherGroupBody.classList.remove('open');
                 otherIcon.classList.remove('fa-minus');
+                otherIcon.classList.add('fa-plus');
             }
 
         });
@@ -88,26 +89,24 @@ const cafes = [
     },
 ]
 
+
+
 document.addEventListener('DOMContentLoaded', ()=>{
     const listEl = document.getElementById('cafe-list');
     if (!listEl) return;
 
     function starsHTML(rating){
-        if (rating == 0) return '<span class="no-rating">Not rated yet</span>';
-    
+        if (rating == 0) return '<span class="no-rating">Not rated yet</span>';    
         let stars = '';
         for (let i = 1; i<=5; i++){
             if (i<=rating){
-                stars += '<i class="fa-solid fa-star"></i>';
-            }
+                stars += '<i class="fa-solid fa-star"></i>';            }
             else {
                 stars+= '<i class="fa-regular fa-star"></i>';
             }
         }
         return stars;
     }
-
-
 
     function renderCafes(){
         listEl.innerHTML='';
@@ -135,4 +134,38 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
     renderCafes();
 
+});
+
+// map page
+document.addEventListener('DOMContentLoaded', ()=>{
+    const mapEl = document.getElementById('map');
+    if (!mapEl) return; 
+
+    const map = L.map('map').setView([43.47, -80.55], 15);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
+        attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+    cafes.forEach((cafe) => {
+        const logoIcon = L.icon({
+            iconUrl: 'images/ccclogo.png',
+            iconSize: [40,40],
+            iconAnchor: [20, 20], // where does the image sit 
+            popupAnchor: [0, -20], // relative point for popup
+            className: cafe.status, // do i want this?
+        })
+        const marker = L.marker([cafe.lat, cafe.lng], {icon:logoIcon}).addTo(map);
+    });
+
+    
+    marker.bindPopup(`
+        <div class="map-popup">
+            <img src="images/ccclogo.png" alt="logo" class ="popup-logo">
+            <div>
+                <strong>${cafe.name}</strong>
+                <p>${cafe.status==='visited' ? 'Visited' : 'On my wishlist'}</p>
+            </div>
+        </div>
+    `);
 });

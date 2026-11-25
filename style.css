@@ -334,6 +334,44 @@ img{
     margin-bottom: 20px;
 }
 
+/* map section */
+.map-section{
+    padding: 40px 0;
+}
+
+#map{
+    height: 500px;
+    border-radius: 10px;
+    margin-bottom: 40px;
+}
+
+#map img{
+    width: auto;
+    max-width: none;
+} /* undo the 100px from top */
+
+.map-popup{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Gaegu', sans-serif;
+    font-size: 1rem;
+}
+
+.map-popup p{
+    margin: 0;
+}
+
+#map .popup-logo {
+    width: 40px;
+    height: 40px;
+}
+
+#map .wishlist {
+    opacity: 0.5;
+    filter: grayscale(100%);
+} /* faded if not visited */
+
 
 /* Utility Classes */
 .container{
