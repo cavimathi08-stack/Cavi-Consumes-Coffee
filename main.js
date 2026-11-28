@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () =>{ // wait for page to load
         otherGroups.forEach((otherGroup)=>{
             if (otherGroup != group){
                 const otherGroupBody = otherGroup.querySelector('.faq-group-body');
-                const otherIcon = otherGroup.querySelector(i);
+                const otherIcon = otherGroup.querySelector('i');
 
                 otherGroupBody.classList.remove('open');
                 otherIcon.classList.remove('fa-minus');
@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // cafe reviews
 
-const cafes = [
+const defaultCafes = [
     {
         id: 1,
         name: "STC Starbucks",
@@ -88,6 +88,12 @@ const cafes = [
         notes: "",
     },
 ]
+
+let cafes = JSON.parse(localStorage.getItem('cafes')) || defaultCafes;
+
+function saveCafes(){
+    localStorage.setItem('cafes', JSON.stringify(cafes));
+}
 
 
 
@@ -134,6 +140,30 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
     renderCafes();
 
+    const form = document.getElementById('cafe-form');
+
+    form.addEventListener('submit', (e) => {
+        e.preventDefault(); // stop page from reloading
+
+        const newCafe = {
+            id: Date.now(), // use a unique number
+            name: document.getElementById('cafe-name').value.trim(),
+            drink: document.getElementById('cafe-drink').value.trim(),
+            status: document.getElementById('cafe-status').value.trim(),
+            rating: Number(document.getElementById('cafe-rating').value),
+            lat: Number(document.getElementById('cafe-lat').value),
+            lng: Number(document.getElementById('cafe-lng').value),
+            notes: document.getElementById('cafe-notes').value.trim(),
+
+        };
+
+        cafes.push(newCafe);
+        saveCafes();
+        renderCafes();
+        form.reset(); // reset form
+
+    });
+
 });
 
 // map page
@@ -156,16 +186,19 @@ document.addEventListener('DOMContentLoaded', ()=>{
             className: cafe.status, // do i want this?
         })
         const marker = L.marker([cafe.lat, cafe.lng], {icon:logoIcon}).addTo(map);
+   
+        marker.bindPopup(`
+            <div class="map-popup">
+                <img src="images/ccclogo.png" alt="logo" class ="popup-logo">
+                <div>
+                    <strong>${cafe.name}</strong>
+                    <p>${cafe.status==='visited' ? 'Visited' : 'On my wishlist'}</p>
+                </div>
+            </div>
+        `);
+
     });
 
     
-    marker.bindPopup(`
-        <div class="map-popup">
-            <img src="images/ccclogo.png" alt="logo" class ="popup-logo">
-            <div>
-                <strong>${cafe.name}</strong>
-                <p>${cafe.status==='visited' ? 'Visited' : 'On my wishlist'}</p>
-            </div>
-        </div>
-    `);
+
 });

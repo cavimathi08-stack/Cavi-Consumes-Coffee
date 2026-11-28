@@ -8,6 +8,7 @@
     --primary-color: #c4ddf1; /* colour shortcuts*/
     --light-color: #f4f4f6;
     --dark-color: #111111;
+    --lightish-color: #eef5ff;
 }
 
 body{
@@ -82,6 +83,10 @@ img{
 
 .navbar ul li:last-child a{
     margin-left: 10px;
+}
+
+.navbar:hover{
+    background-color: var(--lightish-color);
 }
 
 /* Hero Section */
@@ -334,6 +339,38 @@ img{
     margin-bottom: 20px;
 }
 
+.cafe-form{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-width: 600px;
+    margin-bottom: 40px;
+}
+
+.cafe-form .text-md{
+    margin: 0 0 10px;
+}
+
+.cafe-form input, .cafe-form select, .cafe-form textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: inherit;
+    font-size: 1rem;
+    width: 100%
+}
+
+.cafe-form .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.cafe-form button {
+    margin-top: 10px;
+    align-self: flex-start;
+}
+
 /* map section */
 .map-section{
     padding: 40px 0;
@@ -481,6 +518,11 @@ img{
 
 .bg-light{
     background: var(--light-color);
+    color: #333;
+}
+
+.bg-lightish{
+    background: var(--lightish-color);
     color: #333;
 }
 

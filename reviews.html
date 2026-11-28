@@ -39,10 +39,7 @@
                                             
                         <li>
                             <a href="reviews.html">Reviews</a>
-                        </li>                    
-                        <li>
-                            <a class="btn" href="#">Log In</a>
-                        </li>
+                        </li>   
                     </ul>
                 </div>
                 <!---hamburger button-->
@@ -64,10 +61,7 @@
                                             
                         <li>
                             <a href="reviews.html">Reviews</a>
-                        </li>                    
-                        <li>
-                            <a class="btn" href="#"> <i class="fas fa-user"></i> Log In </a>
-                        </li>                      
+                        </li>                 
                     </ul>                    
                 </div>
             </div>
@@ -75,12 +69,58 @@
         <section class="reviews">
             <div class="container">
                 <h1 class="text-xl">My Cafe Reviews</h1>
+                <form id= "cafe-form" class="card bg-lightish cafe-form">
+                    <h2 class="text-md">Add a cafe</h2>
+
+                    <label for="cafe-name">Cafe Name</label> <!---connects label to the matching id-->
+                    <input type="text" id="cafe-name" required>
+
+                    <label for="cafe-drink">What I ordered</label>
+                    <input type="text" id="cafe-drink">
+
+                    <div class="form-row">
+                        <div>
+                            <label for="cafe-status">Status</label>
+                            <select id="cafe-status">
+                                <option value="visited">Visited</option>
+                                <option value="wishlist">Wishlist</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="cafe-rating">Rating</label>
+                            <select id="cafe-rating">
+                                <option value="0">not rated</option>
+                                <option value="1">1 star</option>
+                                <option value="2">2 star</option>
+                                <option value="3">3 star</option>
+                                <option value="4">4 star</option>
+                                <option value="5">5 star</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div>
+                            <label for="cafe-lat">Latitude</label>
+                            <input type="number" id="cafe-lat" step="any" required> <!--- accepts non integer values-->
+                        </div>
+                        <div>
+                            <label for="cafe-lng">Longitude</label>
+                            <input type="number" id="cafe-lng" step="any" required>
+                        </div>
+                    </div>
+
+                    <label for="cafe-notes">Notes</label>
+                    <textarea id="cafe-notes" rows="3"></textarea>
+
+                    <button type = "submit" class = "btn btn-dark">Add cafe</button>
+                </form>
                 <section id="cafe-list"></section>
             </div>
         </section>
 
         <!---footer-->
-        <footer class="footer bg-primary"> 
+        <footer class="footer bg-lightish"> 
             <div class="container">
                 <div class="footer-grid">
                     <div>
@@ -90,7 +130,7 @@
                         <div class="card">
                             <h4 class="subscribe to newsletter"></h4>
                             <p class="text-sm">
-                                a bunch of writing that i should probably replace later
+                                get updated everytime I post a review!
                             </p>
                             <form> <!---understand with this does TODO-->
                                 <input type="email" name="" id="email" placeholder="Enter your 
