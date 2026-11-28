@@ -101,6 +101,10 @@ document.addEventListener('DOMContentLoaded', ()=>{
     const listEl = document.getElementById('cafe-list');
     if (!listEl) return;
 
+    // declare 
+    let currentFilter = 'all';
+    let currentSort = 'newest';
+
     function starsHTML(rating){
         if (rating == 0) return '<span class="no-rating">Not rated yet</span>';    
         let stars = '';
@@ -114,10 +118,39 @@ document.addEventListener('DOMContentLoaded', ()=>{
         return stars;
     }
 
+    // filtered sorted copy
+    function getVisibleCafes() {
+        // keep only cafes that match
+        let result = cafes.filter((cafe) => {
+            if (currentFilter === 'all') return true // same value and data type
+            return cafe.status === currentFilter;
+        });
+
+        // sort
+        if (currentSort === 'rating'){
+            result.sort((a, b) => b.rating - a.rating);
+        } 
+        else if (currentSort === 'name'){
+            result.sort((a, b) => a.name.localeCompare(b.name));
+        }
+        else {
+            result.sort((a,b) => b.id - a.id); // newest first 
+        }
+
+        return result;
+    }
     function renderCafes(){
         listEl.innerHTML='';
 
-        cafes.forEach((cafe)=>{
+        // visible cafes
+        const visible = getVisibleCafes();
+
+        if (visible.length === 0){
+            listEl.innerHTML = '<p class="no-rating">No cafés here yet.</p>';
+            return;
+        }
+
+        visible.forEach((cafe)=>{
             const card = document.createElement('article');
             card.className = 'card cafe-card bg-primary';
 
@@ -140,6 +173,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
     renderCafes();
 
+    // form
     const form = document.getElementById('cafe-form');
 
     form.addEventListener('submit', (e) => {
@@ -162,6 +196,29 @@ document.addEventListener('DOMContentLoaded', ()=>{
         renderCafes();
         form.reset(); // reset form
 
+    });
+
+    // filter buttons
+    const filterTabs = document.querySelector('.filter-tabs');
+
+    filterTabs.addEventListener('click', (e) => {
+        const btn = e.target.closest('.filter-btn');
+        if (!btn) return;
+
+        // moving the highlighted box
+        filterTabs.querySelectorAll('.filter-btn').forEach((b) => b.classList.remove('active')); // all are empty
+        btn.classList.add('active'); // make btn 'active'
+
+        currentFilter = btn.dataset.filter; // dataset reads data attributes, can become one of the three options
+        renderCafes();
+    });
+
+    // sort dropdown
+    const sortSelect = document.getElementById('sort-select');
+
+    sortSelect.addEventListener('change', ()=>{
+        currentSort = sortSelect.value; // sort wtv option selected ('rating')
+        renderCafes();
     });
 
 });
@@ -199,6 +256,6 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
     });
 
-    
-
 });
+
+

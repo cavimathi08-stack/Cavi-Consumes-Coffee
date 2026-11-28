@@ -287,6 +287,8 @@ img{
 
 }
 
+
+
 /* stars for rating */
 .stars i{
     color: #000;
@@ -369,6 +371,57 @@ img{
 .cafe-form button {
     margin-top: 10px;
     align-self: flex-start;
+}
+
+/* filtering */
+.filter-bar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.filter-tabs{
+    display: flex;
+    gap: 5px;
+    background: #ddd;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.filter-btn {
+    padding: 8px 18px;
+    border: none;
+    border-radius: 5px;
+    background: none;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+
+}
+
+.filter-btn.active{
+    background: var(--dark-color);
+    color:#fff
+}
+
+/* sort control */
+.sort-control{
+    padding: 20px;    
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.sort-control select{
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: inherit;
+    font-size: 1rem;
 }
 
 /* map section */

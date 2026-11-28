@@ -69,6 +69,7 @@
         <section class="reviews">
             <div class="container">
                 <h1 class="text-xl">My Cafe Reviews</h1>
+                <!-- form for adding more cafes -->
                 <form id= "cafe-form" class="card bg-lightish cafe-form">
                     <h2 class="text-md">Add a cafe</h2>
 
@@ -115,6 +116,28 @@
 
                     <button type = "submit" class = "btn btn-dark">Add cafe</button>
                 </form>
+                <!-- adding controls -->
+                 <div class="filter-bar">
+                    <!-- tabs -->
+                    <div class="filter-tabs">
+                        <button type="button" class="filter-btn active" data-filter="all">All</button>
+                        <button type="button" class="filter-btn" data-filter="visited">Visited</button>
+                        <button type="button" class="filter-btn" data-filter="wishlist">Wishlist</button>
+                    </div>
+
+                    <!-- sort -->
+                     <div class="sort-control">
+                        <label for="sort-select">Sort by</label>
+                        <select id="sort-select">
+                            <option value="newest">Newest First</option>
+                            <option value="rating">Highest Rated</option>
+                            <option value="name">Name (A-Z)</option>
+                        </select>
+                     </div>
+
+
+                 </div>
+
                 <section id="cafe-list"></section>
             </div>
         </section>
